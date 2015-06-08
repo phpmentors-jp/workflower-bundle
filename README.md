@@ -2,6 +2,10 @@
 
 A Symfony bundle for [Workflower](https://github.com/phpmentors-jp/workflower)
 
+[![Total Downloads](https://poser.pugx.org/phpmentors/workflower-bundle/downloads)](https://packagist.org/packages/phpmentors/workflower-bundle)
+[![Latest Stable Version](https://poser.pugx.org/phpmentors/workflower-bundle/v/stable)](https://packagist.org/packages/phpmentors/workflower-bundle)
+[![Latest Unstable Version](https://poser.pugx.org/phpmentors/workflower-bundle/v/unstable)](https://packagist.org/packages/phpmentors/workflower-bundle)
+
 ## Features
 
 ## Installation
