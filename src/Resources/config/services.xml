@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <parameters>
+    <!-- Classes -->
+    <parameter key="phpmentors_workflower.bpmn2_file.class">PHPMentors\Workflower\Definition\Bpmn2File</parameter>
+    <parameter key="phpmentors_workflower.bpmn2_workflow_repository.class">PHPMentors\Workflower\Definition\Bpmn2WorkflowRepository</parameter>
+    <parameter key="phpmentors_workflower.doctrine_lifecycle_listener.class">PHPMentors\WorkflowerBundle\Persistence\DoctrineLifecycleListener</parameter>
+    <parameter key="phpmentors_workflower.php_workflow_serializer.class">PHPMentors\WorkflowerBundle\Persistence\PhpWorkflowSerializer</parameter>
+    <parameter key="phpmentors_workflower.process.class">PHPMentors\Workflower\Process\Process</parameter>
+    <!-- Configuration parameters -->
+  </parameters>
+  <services>
+    <service id="phpmentors_workflower.bpmn2_file" class="%phpmentors_workflower.bpmn2_file.class%" public="false" abstract="true"/>
+    <service id="phpmentors_workflower.bpmn2_workflow_repository" class="%phpmentors_workflower.bpmn2_workflow_repository.class%" public="false" abstract="true"/>
+    <service id="phpmentors_workflower.doctrine_lifecycle_listener" class="%phpmentors_workflower.doctrine_lifecycle_listener.class%">
+        <argument type="service" id="phpmentors_workflower.php_workflow_serializer"/>
+        <tag name="doctrine.event_listener" event="prePersist"/>
+        <tag name="doctrine.event_listener" event="preUpdate"/>
+        <tag name="doctrine.event_listener" event="postLoad"/>
+    </service>
+    <service id="phpmentors_workflower.php_workflow_serializer" class="%phpmentors_workflower.php_workflow_serializer.class%" public="false"/>
+    <service id="phpmentors_workflower.process" class="%phpmentors_workflower.process.class%" public="false" abstract="true"/>
+  </services>
+</container>
