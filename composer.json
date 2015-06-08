@@ -1,0 +1,37 @@
+{
+    "name": "phpmentors/workflower-bundle",
+    "type": "symfony-bundle",
+    "description": "A Symfony bundle for Workflower",
+    "keywords": ["flow", "workflow", "process", "bpm", "bpmn", "symfony"],
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "KUBO Atsuhiro",
+            "email": "kubo@iteman.jp"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "piece/stagehand-fsm": "~2.4@dev",
+        "phpmentors/domain-kata": "~1.4@dev",
+        "phpmentors/workflower": "~1.0@dev",
+        "symfony/config": "~2.3",
+        "symfony/dependency-injection": "~2.3",
+        "symfony/expression-language": "2.6.*",
+        "symfony/finder": "~2.3",
+        "symfony/http-kernel": "~2.3"
+    },
+    "suggest": {
+        "doctrine/orm": ""
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPMentors\\WorkflowerBundle\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
