@@ -17,7 +17,6 @@
         "phpmentors/workflower": "~1.0@dev",
         "symfony/config": "~2.3",
         "symfony/dependency-injection": "~2.3",
-        "symfony/expression-language": "2.6.*",
         "symfony/finder": "~2.3",
         "symfony/http-kernel": "~2.3"
     },
