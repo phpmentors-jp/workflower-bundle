@@ -11,14 +11,14 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.3.9",
         "piece/stagehand-fsm": "~2.4@dev",
         "phpmentors/domain-kata": "~1.4",
         "phpmentors/workflower": "~1.0@dev",
-        "symfony/config": "~2.3",
-        "symfony/dependency-injection": "~2.3",
-        "symfony/finder": "~2.3",
-        "symfony/http-kernel": "~2.3"
+        "symfony/config": "~2.7",
+        "symfony/dependency-injection": "~2.7",
+        "symfony/finder": "~2.7",
+        "symfony/http-kernel": "~2.7"
     },
     "suggest": {
         "doctrine/orm": "Provides transparent serialization/deserialization support for entities with Doctrine ORM"
