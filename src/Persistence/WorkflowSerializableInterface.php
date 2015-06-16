@@ -12,7 +12,9 @@
 
 namespace PHPMentors\WorkflowerBundle\Persistence;
 
-interface WorkflowSerializableInterface extends OperationInterface
+use PHPMentors\Workflower\Process\WorkflowAwareInterface;
+
+interface WorkflowSerializableInterface extends OperationInterface, WorkflowAwareInterface
 {
     /**
      * @param string $serializedWorkflow
