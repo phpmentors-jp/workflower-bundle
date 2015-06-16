@@ -12,8 +12,6 @@
 
 namespace PHPMentors\WorkflowerBundle\Persistence;
 
-use PHPMentors\DomainKata\Operation\OperationInterface;
-
 interface WorkflowSerializableInterface extends OperationInterface
 {
     /**
