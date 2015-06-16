@@ -24,20 +24,6 @@ class PHPMentorsWorkflowerBundle extends Bundle
      */
     public function build(ContainerBuilder $container)
     {
-        $container->loadFromExtension('jms_serializer', array(
-            'metadata' => array(
-                'directories' => array(
-                    'phpmentors_workflower' => array(
-                        'namespace_prefix' => 'PHPMentors\Workflower',
-                        'path' => __DIR__.'/Resources/config/serializer/phpmentors/workflower',
-                    ),
-                    'piece_stagehand_fsm' => array(
-                        'namespace_prefix' => 'Stagehand\FSM',
-                        'path' => __DIR__.'/Resources/config/serializer/piece/stagehand-fsm',
-                    ),
-                ),
-            ),
-        ));
         $container->addCompilerPass(new AlterDefinitionsIntoProcessAwarePass());
     }
 
