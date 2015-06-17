@@ -25,4 +25,9 @@ interface WorkflowSerializableInterface extends OperationInterface, WorkflowAwar
      * @return string
      */
     public function getSerializedWorkflow();
+
+    /**
+     * @return Workflow
+     */
+    public function getWorkflow();
 }
