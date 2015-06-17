@@ -8,7 +8,7 @@
     <parameter key="phpmentors_workflower.php_workflow_serializer.class">PHPMentors\WorkflowerBundle\Persistence\PhpWorkflowSerializer</parameter>
     <parameter key="phpmentors_workflower.process.class">PHPMentors\Workflower\Process\Process</parameter>
     <parameter key="phpmentors_workflower.security_participant.class">PHPMentors\WorkflowerBundle\Process\SecurityParticipant</parameter>
-    <parameter key="phpmentors_workflower.work_item_context.class">PHPMentors\WorkflowerBundle\Process\WorkItemContext</parameter>
+    <parameter key="phpmentors_workflower.work_item_context.class">PHPMentors\Workflower\Process\WorkItemContext</parameter>
     <!-- Configuration parameters -->
   </parameters>
   <services>
