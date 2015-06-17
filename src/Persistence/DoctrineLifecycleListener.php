@@ -14,6 +14,7 @@ namespace PHPMentors\WorkflowerBundle\Persistence;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
+use PHPMentors\Workflower\Persistence\WorkflowSerializerInterface;
 
 class DoctrineLifecycleListener
 {
