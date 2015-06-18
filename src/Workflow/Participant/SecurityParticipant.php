@@ -10,7 +10,7 @@
  * distribution, and is available at http://opensource.org/licenses/BSD-2-Clause
  */
 
-namespace PHPMentors\WorkflowerBundle\Process;
+namespace PHPMentors\WorkflowerBundle\Workflow\Participant;
 
 use PHPMentors\Workflower\Workflow\Participant\ParticipantInterface;
 use PHPMentors\Workflower\Workflow\Resource\ResourceInterface;

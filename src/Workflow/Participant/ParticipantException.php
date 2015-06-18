@@ -10,7 +10,7 @@
  * distribution, and is available at http://opensource.org/licenses/BSD-2-Clause
  */
 
-namespace PHPMentors\WorkflowerBundle\Process;
+namespace PHPMentors\WorkflowerBundle\Workflow\Participant;
 
 class ParticipantException extends \RuntimeException
 {
