@@ -38,7 +38,7 @@ class DoctrineLifecycleListener
     public function prePersist(LifecycleEventArgs $eventArgs)
     {
         $entity = $eventArgs->getEntity();
-        if ($entity instanceof WorkflowSerializableInterface) {
+        if ($entity instanceof WorkflowSerializableInterface && $entity->getWorkflow() !== null) {
             $entity->setSerializedWorkflow($this->workflowSerializer->serialize($entity->getWorkflow()));
         }
     }
@@ -49,7 +49,7 @@ class DoctrineLifecycleListener
     public function preUpdate(PreUpdateEventArgs $eventArgs)
     {
         $entity = $eventArgs->getEntity();
-        if ($entity instanceof WorkflowSerializableInterface) {
+        if ($entity instanceof WorkflowSerializableInterface && $entity->getWorkflow() !== null) {
             $entity->setSerializedWorkflow($this->workflowSerializer->serialize($entity->getWorkflow()));
         }
     }
@@ -60,7 +60,7 @@ class DoctrineLifecycleListener
     public function postLoad(LifecycleEventArgs $eventArgs)
     {
         $entity = $eventArgs->getEntity();
-        if ($entity instanceof WorkflowSerializableInterface) {
+        if ($entity instanceof WorkflowSerializableInterface && $entity->getSerializedWorkflow() !== null) {
             $entity->setWorkflow($this->workflowSerializer->deserialize($entity->getSerializedWorkflow()));
         }
     }
