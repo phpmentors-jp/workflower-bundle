@@ -19,7 +19,7 @@
         "symfony/dependency-injection": "~2.7",
         "symfony/finder": "~2.7",
         "symfony/http-kernel": "~2.7",
-        "symfony/security": "~2.7",
+        "symfony/security-core": "~2.7",
         "symfony/security-bundle": "~2.7"
     },
     "suggest": {
