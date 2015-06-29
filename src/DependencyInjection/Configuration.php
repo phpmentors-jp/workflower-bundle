@@ -25,6 +25,9 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $treeBuilder->root('phpmentors_workflower')
             ->children()
+                ->scalarNode('serializer_service')
+                    ->defaultValue('phpmentors_workflower.php_workflow_serializer')
+                ->end()
                 ->arrayNode('workflow_contexts')
                     ->prototype('array')
                         ->children()
