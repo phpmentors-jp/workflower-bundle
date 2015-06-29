@@ -50,6 +50,8 @@ class PHPMentorsWorkflowerExtension extends Extension
      */
     private function transformConfigToContainer(array $config, ContainerBuilder $container)
     {
+        $container->setAlias('phpmentors_workflower.workflow_serializer', $config['serializer_service']);
+
         foreach ($config['workflow_contexts'] as $workflowContextId => $workflowContext) {
             $workflowContextIdHash = sha1($workflowContextId);
             $bpmn2WorkflowRepositoryDefinition = new DefinitionDecorator('phpmentors_workflower.bpmn2_workflow_repository');
