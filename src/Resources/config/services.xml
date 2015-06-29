@@ -29,7 +29,7 @@
       <argument type="service" id="security.access.role_hierarchy_voter"/>
       <argument type="service" id="security.token_storage"/>
     </service>
-    <service id="phpmentors_workflower.workflow_serializer" abstract="false"/>
+    <service id="phpmentors_workflower.workflow_serializer" public="false" abstract="true"/>
     <service id="phpmentors_workflower.work_item_context" class="%phpmentors_workflower.work_item_context.class%" scope="prototype">
       <argument type="service" id="phpmentors_workflower.participant"/>
     </service>

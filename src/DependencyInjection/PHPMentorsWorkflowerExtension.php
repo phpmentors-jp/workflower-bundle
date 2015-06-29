@@ -50,7 +50,9 @@ class PHPMentorsWorkflowerExtension extends Extension
      */
     private function transformConfigToContainer(array $config, ContainerBuilder $container)
     {
+        $workflowSerializerDefinition = $container->getDefinition('phpmentors_workflower.workflow_serializer');
         $container->setAlias('phpmentors_workflower.workflow_serializer', $config['serializer_service']);
+        $container->getAlias('phpmentors_workflower.workflow_serializer')->setPublic($workflowSerializerDefinition->isPublic());
 
         foreach ($config['workflow_contexts'] as $workflowContextId => $workflowContext) {
             $workflowContextIdHash = sha1($workflowContextId);
