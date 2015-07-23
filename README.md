@@ -20,7 +20,7 @@ A Symfony bundle for [Workflower](https://github.com/phpmentors-jp/workflower)
 Add the dependency to `phpmentors/workflower-bundle` into your `composer.json` file as the following:
 
 ```
-composer require phpmentors/workflower-bundle "~1.0@dev"
+composer require phpmentors/workflower-bundle "1.0.*"
 ```
 
 ## Support
