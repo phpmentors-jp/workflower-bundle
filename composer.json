@@ -21,7 +21,7 @@
         "symfony/security-bundle": "~2.7"
     },
     "suggest": {
-        "doctrine/orm": ">=2.7.0 provides transparent serialization/deserialization support for entities with Doctrine ORM",
+        "doctrine/orm": "provides transparent serialization/deserialization support for entities with Doctrine ORM",
         "symfony/doctrine-bridge": ">=2.7.0 provides transparent serialization/deserialization support for entities with Doctrine ORM"
     },
     "autoload": {
