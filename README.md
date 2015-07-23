@@ -8,6 +8,11 @@ A Symfony bundle for [Workflower](https://github.com/phpmentors-jp/workflower)
 
 ## Features
 
+* Integration with the service container by the `phpmentors_workflower.process_aware` tag
+* Integration with the security system for Workflower's participants
+* Transparent serialization/deserialization support for entities with Doctrine ORM
+* Multiple workflow contexts (BPMN2 definition directories) with configuration
+
 ## Installation
 
 `PHPMentorsWorkflowerBundle` can be installed using [Composer](http://getcomposer.org/).
