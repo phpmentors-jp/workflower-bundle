@@ -12,7 +12,6 @@
     ],
     "require": {
         "php": ">=5.3.9",
-        "piece/stagehand-fsm": "~2.4@dev",
         "phpmentors/domain-kata": "~1.4",
         "phpmentors/workflower": "~1.0@dev",
         "symfony/config": "~2.7",
