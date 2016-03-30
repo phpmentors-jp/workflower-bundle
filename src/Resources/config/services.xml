@@ -10,6 +10,7 @@
     <parameter key="phpmentors_workflower.process.class">PHPMentors\Workflower\Process\Process</parameter>
     <parameter key="phpmentors_workflower.security_participant.class">PHPMentors\WorkflowerBundle\Workflow\Participant\SecurityParticipant</parameter>
     <parameter key="phpmentors_workflower.work_item_context.class">PHPMentors\Workflower\Process\WorkItemContext</parameter>
+    <parameter key="phpmentors_workflower.workflow_context.class">PHPMentors\WorkflowerBundle\Process\WorkflowContext</parameter>
     <!-- Configuration parameters -->
   </parameters>
   <services>
@@ -33,5 +34,6 @@
     <service id="phpmentors_workflower.work_item_context" class="%phpmentors_workflower.work_item_context.class%" scope="prototype">
       <argument type="service" id="phpmentors_workflower.participant"/>
     </service>
+    <service id="phpmentors_workflower.workflow_context" class="%phpmentors_workflower.workflow_context.class%" public="false" abstract="true"/>
   </services>
 </container>

@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2015 KUBO Atsuhiro <kubo@iteman.jp>,
+ * Copyright (c) 2015-2016 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
  *
  * This file is part of PHPMentorsWorkflowerBundle.
@@ -75,8 +75,13 @@ class PHPMentorsWorkflowerExtension extends Extension
 
                 $bpmn2WorkflowRepositoryDefinition->addMethodCall('add', array(new Reference($bpmn2FileServiceId)));
 
+                $workflowContextDefinition = new DefinitionDecorator('phpmentors_workflower.workflow_context');
+                $workflowContextDefinition->setArguments(array($workflowContextId, $workflowId));
+                $workflowContextServiceId = 'phpmentors_workflower.workflow_context.'.sha1($workflowContextId.$workflowId);
+                $container->setDefinition($workflowContextServiceId, $workflowContextDefinition);
+
                 $processDefinition = new DefinitionDecorator('phpmentors_workflower.process');
-                $processDefinition->setArguments(array(pathinfo($definitionFile->getFilename(), PATHINFO_FILENAME), new Reference($bpmn2WorkflowRepositoryServiceId)));
+                $processDefinition->setArguments(array(new Reference($workflowContextServiceId), new Reference($bpmn2WorkflowRepositoryServiceId)));
                 $processServiceId = 'phpmentors_workflower.process.'.sha1($workflowContextId.$workflowId);
                 $container->setDefinition($processServiceId, $processDefinition);
             }
