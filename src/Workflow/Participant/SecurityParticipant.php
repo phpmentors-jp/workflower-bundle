@@ -47,7 +47,7 @@ class SecurityParticipant implements ParticipantInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function hasRole($role)
     {
@@ -62,7 +62,7 @@ class SecurityParticipant implements ParticipantInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setResource(ResourceInterface $resource)
     {
@@ -72,7 +72,7 @@ class SecurityParticipant implements ParticipantInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getResource()
     {
@@ -80,7 +80,7 @@ class SecurityParticipant implements ParticipantInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -88,7 +88,7 @@ class SecurityParticipant implements ParticipantInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getName()
     {

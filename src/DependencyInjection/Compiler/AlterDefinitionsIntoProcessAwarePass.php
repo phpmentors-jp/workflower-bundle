@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\Reference;
 class AlterDefinitionsIntoProcessAwarePass implements CompilerPassInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @throws \InvalidArgumentException
      */
