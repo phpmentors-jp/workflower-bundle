@@ -9,9 +9,9 @@ A Symfony bundle for [Workflower](https://github.com/phpmentors-jp/workflower)
 ## Features
 
 * Integration with the service container by the `phpmentors_workflower.process_aware` tag
-* Integration with the security system for Workflower's participants
+* Integration with the security system for workflow participants
 * Transparent serialization/deserialization support for entities with Doctrine ORM
-* Multiple workflow contexts (BPMN 2.0 definition directories) with configuration
+* Multiple workflow contexts (which are directories where BPMN files are stored)
 
 ## Installation
 
@@ -55,7 +55,7 @@ phpmentors_workflower:
     serializer_service: phpmentors_workflower.base64_php_workflow_serializer # Defaults to `phpmentors_workflower.php_workflow_serializer`
     workflow_contexts:
         app:
-            definition_dir: "%kernel.root_dir%/../src/AppBundle/Resources/config/workflower" # A directory where BPMN 2.0 definition files for the `app` context are stored
+            definition_dir: "%kernel.root_dir%/../src/AppBundle/Resources/config/workflower" # A directory where BPMN files for the `app` context are stored
 ```
 
 ## Support
