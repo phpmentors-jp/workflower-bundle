@@ -81,7 +81,11 @@ class PHPMentorsWorkflowerExtension extends Extension
                 $container->setDefinition($workflowContextServiceId, $workflowContextDefinition);
 
                 $processDefinition = new DefinitionDecorator('phpmentors_workflower.process');
-                $processDefinition->setArguments(array(new Reference($workflowContextServiceId), new Reference($bpmn2WorkflowRepositoryServiceId)));
+                $processDefinition->setArguments(array(
+                    new Reference($workflowContextServiceId),
+                    new Reference($bpmn2WorkflowRepositoryServiceId),
+                    new Reference('phpmentors_workflower.operation_runner_delegate'),
+                ));
                 $processServiceId = 'phpmentors_workflower.process.'.sha1($workflowContextId.$workflowId);
                 $container->setDefinition($processServiceId, $processDefinition);
             }
