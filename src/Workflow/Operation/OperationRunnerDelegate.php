@@ -15,51 +15,50 @@ namespace PHPMentors\WorkflowerBundle\Workflow\Operation;
 use PHPMentors\Workflower\Workflow\Operation\OperationalInterface;
 use PHPMentors\Workflower\Workflow\Operation\OperationRunnerInterface;
 use PHPMentors\Workflower\Workflow\Workflow;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * @since Class available since Release 1.2.0
  */
-class OperationRunnerDelegate implements OperationRunnerInterface
+class OperationRunnerDelegate implements OperationRunnerInterface, ContainerAwareInterface
 {
     /**
-     * @var array
+     * @var ContainerInterface
      */
-    private $operationRunners;
+    private $container;
 
     /**
-     * @param string                   $serviceId
-     * @param OperationRunnerInterface $operationRunner
+     * {@inheritdoc}
      */
-    public function addOperationRunner($serviceId, OperationRunnerInterface $operationRunner)
+    public function setContainer(ContainerInterface $container = null)
     {
-        $this->operationRunners[$serviceId] = $operationRunner;
+        $this->container = $container;
     }
 
     /**
      * {@inheritdoc}
-     *
-     * @throws OperationRunnerNotFoundException
      */
     public function provideParticipant(OperationalInterface $operational, Workflow $workflow)
     {
-        if (!array_key_exists($operational->getOperation(), $this->operationRunners)) {
-            throw new OperationRunnerNotFoundException(sprintf('The operation runner for the operation "%s" is not found.', $operational->getOperation()));
-        }
+        assert($this->container !== null);
 
-        return $this->operationRunners[$operational->getOperation()]->provideParticipant($operational, $workflow);
+        $operationRunner = $this->container->get($operational->getOperation());
+        assert($operationRunner instanceof OperationRunnerInterface);
+
+        return $operationRunner->provideParticipant($operational, $workflow);
     }
 
     /**
      * {@inheritdoc}
-     *
-     * @throws OperationRunnerNotFoundException
      */
     public function run(OperationalInterface $operational, Workflow $workflow)
     {
-        if (!array_key_exists($operational->getOperation(), $this->operationRunners)) {
-            throw new OperationRunnerNotFoundException(sprintf('The operation runner for the operation "%s" is not found.', $operational->getOperation()));
-        }
+        assert($this->container !== null);
 
-        $this->operationRunners[$operational->getOperation()]->run($operational, $workflow);
+        $operationRunner = $this->container->get($operational->getOperation());
+        assert($operationRunner instanceof OperationRunnerInterface);
+
+        return $operationRunner->run($operational, $workflow);
     }
 }
