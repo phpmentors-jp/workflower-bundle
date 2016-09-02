@@ -13,7 +13,6 @@
 namespace PHPMentors\WorkflowerBundle;
 
 use PHPMentors\WorkflowerBundle\DependencyInjection\Compiler\AlterDefinitionsIntoProcessAwarePass;
-use PHPMentors\WorkflowerBundle\DependencyInjection\Compiler\SecurityParticipantAwarePass;
 use PHPMentors\WorkflowerBundle\DependencyInjection\PHPMentorsWorkflowerExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -26,7 +25,6 @@ class PHPMentorsWorkflowerBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         $container->addCompilerPass(new AlterDefinitionsIntoProcessAwarePass());
-        $container->addCompilerPass(new SecurityParticipantAwarePass());
     }
 
     /**
