@@ -34,16 +34,16 @@ composer require phpmentors/workflower-bundle "~1.2@dev"
 Second, add `PHPMentorsWorkflowerBundle` into your bundles to register in `AppKernel::registerBundles()` as the following:
 
 ```php
-...
+// ...
 class AppKernel extends Kernel
 {
     public function registerBundles()
     {
         $bundles = array(
-            ...
+            // ...
             new PHPMentors\WorkflowerBundle\PHPMentorsWorkflowerBundle(),
         );
-        ...
+        // ...
 ```
 
 ## Configuration
@@ -51,6 +51,8 @@ class AppKernel extends Kernel
 `app/config/config.yml:`
 
 ```yaml
+# ...
+
 phpmentors_workflower:
     serializer_service: phpmentors_workflower.base64_php_workflow_serializer # Defaults to `phpmentors_workflower.php_workflow_serializer`
     workflow_contexts:
