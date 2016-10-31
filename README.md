@@ -22,13 +22,13 @@ First, add the dependency to `phpmentors/workflower-bundle` into your `composer.
 **Stable version:**
 
 ```
-composer require phpmentors/workflower-bundle "1.1.*"
+composer require phpmentors/workflower-bundle "1.2.*"
 ```
 
 **Development version:**
 
 ```
-composer require phpmentors/workflower-bundle "~1.2@dev"
+composer require phpmentors/workflower-bundle "~1.3@dev"
 ```
 
 Second, add `PHPMentorsWorkflowerBundle` into your bundles to register in `AppKernel::registerBundles()` as the following:
