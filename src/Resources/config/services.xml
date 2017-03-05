@@ -35,7 +35,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="phpmentors_workflower.workflow_serializer" public="false" abstract="true"/>
-    <service id="phpmentors_workflower.work_item_context" class="%phpmentors_workflower.work_item_context.class%" scope="prototype">
+    <service id="phpmentors_workflower.work_item_context" class="%phpmentors_workflower.work_item_context.class%" shared="false">
       <argument type="service" id="phpmentors_workflower.participant"/>
     </service>
     <service id="phpmentors_workflower.workflow_context" class="%phpmentors_workflower.workflow_context.class%" public="false" abstract="true"/>
