@@ -88,6 +88,8 @@ class PHPMentorsWorkflowerExtension extends Extension
                 ));
                 $processServiceId = 'phpmentors_workflower.process.'.sha1($workflowContextId.$workflowId);
                 $container->setDefinition($processServiceId, $processDefinition);
+
+                $container->getDefinition('phpmentors_workflower.process_factory')->addMethodCall('addProcess', array(new Reference($processServiceId)));
             }
         }
     }
