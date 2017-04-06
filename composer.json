@@ -20,8 +20,12 @@
         "symfony/security-core": "~2.8|~3.0",
         "symfony/security-bundle": "~2.8|~3.0"
     },
+    "require-dev": {
+        "doctrine/orm": "~2.4",
+        "symfony/doctrine-bridge": "~2.8|~3.0"
+    },
     "suggest": {
-        "doctrine/orm": "provides transparent serialization/deserialization support for entities with Doctrine ORM",
+        "doctrine/orm": ">= 2.4.0 provides transparent serialization/deserialization support for entities with Doctrine ORM",
         "symfony/doctrine-bridge": ">=2.8.0 provides transparent serialization/deserialization support for entities with Doctrine ORM"
     },
     "autoload": {
