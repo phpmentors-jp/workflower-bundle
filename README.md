@@ -60,6 +60,11 @@ phpmentors_workflower:
             definition_dir: "%kernel.root_dir%/../src/AppBundle/Resources/config/workflower" # A directory where BPMN files for the `app` context are stored
 ```
 
+## Documentation
+
+* [Quick Start Guide](https://github.com/phpmentors-jp/workflower/blob/master/docs/quick-start-guide.md)
+* [Release Notes](https://github.com/phpmentors-jp/workflower-bundle/releases)
+
 ## Support
 
 If you find a bug or have a question, or want to request a feature, create an issue or pull request for it on [Issues](https://github.com/phpmentors-jp/workflower-bundle/issues).
