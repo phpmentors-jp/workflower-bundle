@@ -2,7 +2,7 @@
     "name": "phpmentors/workflower-bundle",
     "type": "symfony-bundle",
     "description": "A Symfony bundle for Workflower",
-    "keywords": ["flow", "workflow", "process", "bpm", "bpmn", "symfony"],
+    "keywords": ["flow", "workflow", "process", "bpm", "bpmn", "bpms", "symfony"],
     "license": "BSD-2-Clause",
     "authors": [
         {
