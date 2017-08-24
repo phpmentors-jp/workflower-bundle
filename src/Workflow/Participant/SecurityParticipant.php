@@ -36,7 +36,7 @@ class SecurityParticipant implements ParticipantInterface
     /**
      * @var ResourceInterface
      */
-    private $user;
+    private $resource;
 
     /**
      * @param TokenStorageInterface          $tokenStorage
@@ -53,7 +53,7 @@ class SecurityParticipant implements ParticipantInterface
      */
     public function hasRole($role)
     {
-        return $this->accessDecisionManager->decide($this->user === null ? $this->tokenStorage->getToken() : ($this->user instanceof UserInterface ? new UserToken($this->user) : $this->user), array($role));
+        return $this->accessDecisionManager->decide($this->resource === null ? $this->tokenStorage->getToken() : ($this->resource instanceof UserInterface ? new UserToken($this->resource) : $this->resource), array($role));
     }
 
     /**
@@ -63,7 +63,7 @@ class SecurityParticipant implements ParticipantInterface
     {
         assert($resource instanceof UserInterface || $resource instanceof TokenInterface);
 
-        $this->user = $resource;
+        $this->resource = $resource;
     }
 
     /**
@@ -71,7 +71,7 @@ class SecurityParticipant implements ParticipantInterface
      */
     public function getResource()
     {
-        if ($this->user === null) {
+        if ($this->resource === null) {
             $token = $this->tokenStorage->getToken();
             if ($token === null) {
                 return null;
@@ -84,7 +84,7 @@ class SecurityParticipant implements ParticipantInterface
 
             return new UserResource($user);
         } else {
-            return $this->user;
+            return $this->resource;
         }
     }
 
