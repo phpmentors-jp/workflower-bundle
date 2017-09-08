@@ -19,16 +19,8 @@ A Symfony bundle for [Workflower](https://github.com/phpmentors-jp/workflower)
 
 First, add the dependency to `phpmentors/workflower-bundle` into your `composer.json` file as the following:
 
-**Stable version:**
-
 ```
-composer require phpmentors/workflower-bundle "1.3.*"
-```
-
-**Development version:**
-
-```
-composer require phpmentors/workflower-bundle "~1.4@dev"
+composer require phpmentors/workflower-bundle "1.4.*"
 ```
 
 Second, add `PHPMentorsWorkflowerBundle` into your bundles to register in `AppKernel::registerBundles()` as the following:
