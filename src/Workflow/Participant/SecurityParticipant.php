@@ -15,35 +15,37 @@ namespace PHPMentors\WorkflowerBundle\Workflow\Participant;
 use PHPMentors\Workflower\Workflow\Participant\ParticipantInterface;
 use PHPMentors\Workflower\Workflow\Resource\ResourceInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter;
-use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class SecurityParticipant implements ParticipantInterface
 {
-    /**
-     * @var RoleHierarchyVoter
-     */
-    private $roleHierarchyVoter;
-
     /**
      * @var TokenStorageInterface
      */
     private $tokenStorage;
 
     /**
-     * @var ResourceInterface
+     * @var AccessDecisionManagerInterface
+     *
+     * @since Property available since Release 1.4.0
      */
-    private $user;
+    private $accessDecisionManager;
 
     /**
-     * @param RoleHierarchyVoter    $roleHierarchyVoter
-     * @param TokenStorageInterface $tokenStorage
+     * @var ResourceInterface
      */
-    public function __construct(RoleHierarchyVoter $roleHierarchyVoter, TokenStorageInterface $tokenStorage)
+    private $resource;
+
+    /**
+     * @param TokenStorageInterface          $tokenStorage
+     * @param AccessDecisionManagerInterface $accessDecisionManager
+     */
+    public function __construct(TokenStorageInterface $tokenStorage, AccessDecisionManagerInterface $accessDecisionManager)
     {
-        $this->roleHierarchyVoter = $roleHierarchyVoter;
         $this->tokenStorage = $tokenStorage;
+        $this->accessDecisionManager = $accessDecisionManager;
     }
 
     /**
@@ -51,14 +53,7 @@ class SecurityParticipant implements ParticipantInterface
      */
     public function hasRole($role)
     {
-        assert($this->tokenStorage->getToken() !== null);
-
-        $result = $this->roleHierarchyVoter->vote($this->tokenStorage->getToken(), $this->getResource(), array($role));
-        if ($result == VoterInterface::ACCESS_ABSTAIN) {
-            throw new ParticipantException(sprintf('Checking whether the participant has role "%s" cannot be decided for some reason.', $role));
-        }
-
-        return $result == VoterInterface::ACCESS_GRANTED;
+        return $this->accessDecisionManager->decide($this->resource === null ? $this->tokenStorage->getToken() : ($this->resource instanceof UserInterface ? new UserToken($this->resource) : $this->resource), array($role));
     }
 
     /**
@@ -66,9 +61,9 @@ class SecurityParticipant implements ParticipantInterface
      */
     public function setResource(ResourceInterface $resource)
     {
-        assert($resource instanceof UserInterface);
+        assert($resource instanceof UserInterface || $resource instanceof TokenInterface);
 
-        $this->user = $resource;
+        $this->resource = $resource;
     }
 
     /**
@@ -76,7 +71,21 @@ class SecurityParticipant implements ParticipantInterface
      */
     public function getResource()
     {
-        return $this->user === null ? $this->tokenStorage->getToken()->getUser() : $this->user;
+        if ($this->resource === null) {
+            $token = $this->tokenStorage->getToken();
+            if ($token === null) {
+                return null;
+            }
+
+            $user = $token->getUser();
+            if ($user instanceof ResourceInterface) {
+                return $user;
+            }
+
+            return new UserResource($user);
+        } else {
+            return $this->resource;
+        }
     }
 
     /**
