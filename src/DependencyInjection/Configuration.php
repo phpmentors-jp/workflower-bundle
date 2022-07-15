@@ -22,8 +22,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('phpmentors_workflower')
+        $treeBuilder = new TreeBuilder('phpmentors_workflower');
+        $treeBuilder->getRootNode()
             ->children()
                 ->scalarNode('serializer_service')
                     ->defaultValue('phpmentors_workflower.php_workflow_serializer')
